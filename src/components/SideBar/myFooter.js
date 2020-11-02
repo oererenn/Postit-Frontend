@@ -11,10 +11,10 @@ var footers = [{
       
       <div className="footers-wrapper">
         <ul style={{listStyle:"none"}}>
-           <li><a style={{color:"#000000"}} href="#">Help</a></li> 
-            <li><a style={{color:"#000000"}} href="#">About</a></li>
-              <li><a style={{color:"#000000"}} href="#">Terms</a></li> 
-             <li><a style={{color:"#000000"}} href="#">Privacy Policy</a></li> 
+           <li><a style={{color:"#000000"}} >Help</a></li> 
+            <li><a style={{color:"#000000"}} >About</a></li>
+              <li><a style={{color:"#000000"}} >Terms</a></li> 
+             <li><a style={{color:"#000000"}} >Privacy Policy</a></li> 
            
         </ul>
 
