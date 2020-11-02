@@ -39,7 +39,7 @@ useEffect(() => {
           <div key={community.id} className="community hoverable">
             <span style={{fontWeight:550}}>{index + 1}</span>
             <ArrowDropUp />
-            <a  style={{color: "#000000"}}><span onClick={handleBaba} className="name">c/{community.name}</span></a>
+            <a  href="/login" style={{color: "#000000"}}><span onClick={handleBaba} className="name">c/{community.name}</span></a>
             <span className="ml-auto mr-3"><PeopleAltIcon className="mr-2"/>0 Members</span>
             
           </div>

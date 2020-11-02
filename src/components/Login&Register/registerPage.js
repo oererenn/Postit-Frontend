@@ -3,8 +3,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
 import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
@@ -75,7 +73,7 @@ const passregext = /^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*
 AuthService.register(data.username, data.email, data.password).then(res => {
 
    setMessage(res.data.message)
-   if (res.data.message == "Successfully registered!") {
+   if (res.data.message === "Successfully registered!") {
      setSuccess(true)
    } else {
      setError(true)

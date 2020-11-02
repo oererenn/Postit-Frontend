@@ -82,7 +82,7 @@ if(posts.length === 0){
           <Typography variant="body2" component="p">
             {post.description}
           </Typography>
-         <div> <a style={{fontWeight:400,textTransform:"none",fontSize:12,color: "#555555"}}>c/{post.community.name}</a></div>
+         <div> <a style={{fontWeight:400,textTransform:"none",fontSize:12,color: "#555555"}} href ="/login">c/{post.community.name}</a></div>
         </CardContent>
       </CardActionArea>
      
@@ -90,7 +90,7 @@ if(posts.length === 0){
         <Button startIcon={<ChatBubbleIcon/>}  style={{fontWeight:550,textTransform:"none",fontSize:12}}>
         {post.voteCount||0}  Comments
         </Button>
-            <div className="ml-auto" style={{fontWeight:550,textTransform:"none",fontSize:13, marginBottom:3.8}}>Posted by on {post.createdAt} by <a style={{color: "#202020",fontWeight:600}}>{post.user.username}</a></div>
+            <div className="ml-auto" style={{fontWeight:550,textTransform:"none",fontSize:13, marginBottom:3.8}}>Posted by on {post.createdAt} by <a href="/login" style={{color: "#202020",fontWeight:600}}>{post.user.username}</a></div>
       </CardActions> </div>
     </Card>)}
          
