@@ -26,10 +26,10 @@ phases:
   - yarn test
   #build
   - echo Building...
-  - yarn build
+  - npm run build
 
 artifacts:
   files:
   - "**/*"
   discard-paths: no
-  base-directory: dist
+  base-directory: build
