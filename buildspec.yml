@@ -28,7 +28,7 @@ phases:
   - echo Building...
   - yarn build
 
-artifact:
+artifacts:
   files:
   - "**/*"
   discard-paths: no
