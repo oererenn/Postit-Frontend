@@ -14,7 +14,7 @@ var topics =[{name:"Sports"}]
       </div>
       <div className="topics-wrapper">
         {topics.map((topic, index) => (
-          <div className="topic hoverable">
+          <div key={index} className="topic hoverable">
             <span style={{fontWeight:550}}>{index + 1}</span>
             <ArrowDropUp />
             <span className="name">c/{topic.name}</span>
