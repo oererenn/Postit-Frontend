@@ -122,7 +122,6 @@ const handleClose = (event, reason) => {
               inputRef={register}
               name="username"
                 autoComplete="username"
-                name="username"
                 variant="outlined"
                 required
                 fullWidth
@@ -140,7 +139,6 @@ const handleClose = (event, reason) => {
                 fullWidth
                 id="email"
                 label="Email Address"
-                name="email"
                 autoComplete="email"
               />
             </Grid>
@@ -151,7 +149,6 @@ const handleClose = (event, reason) => {
                 variant="outlined"
                 required
                 fullWidth
-                name="password"
                 label="Password"
                 type="password"
                 id="password"
