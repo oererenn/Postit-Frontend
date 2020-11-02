@@ -79,7 +79,7 @@ const handleClose = (event, reason) => {
 
  async function onSubmit(data) {
        
-       data.userId = user.userId;
+       data.userId = "52eb2084-1b1f-42fc-88ec-8d6dca1b86f4";
        const formData = new FormData();
        formData.append("file", image)
        formData.append("data", new Blob([JSON.stringify({
