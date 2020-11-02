@@ -111,7 +111,6 @@ axios.post("http://localhost:8081/api/auth/signin", data).then(res => {
             fullWidth
             id="username"
             label="Username"
-            name="username"
             autoComplete="username"
             autoFocus
           />
@@ -122,7 +121,6 @@ axios.post("http://localhost:8081/api/auth/signin", data).then(res => {
             margin="normal"
             required
             fullWidth
-            name="password"
             label="Password"
             type="password"
             id="password"

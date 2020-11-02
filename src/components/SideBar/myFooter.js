@@ -3,9 +3,7 @@ import './myFooter.css'
 
 export function Myfooter(props) {
     
-var footers = [{
-    name: "Sports"
-}]
+
     return (
         <div className="footer-section pt-3">
       
