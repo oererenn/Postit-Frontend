@@ -40,6 +40,8 @@ export function Submitpost(props) {
      axios.get("http://localhost:8080/api/communities").then(res => {
          console.log(res);
          setCommunities(res.data);
+     }).catch(err => {
+       console.log(err)
      })
  }
 
