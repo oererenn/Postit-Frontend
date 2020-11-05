@@ -4,13 +4,13 @@ import ArrowDropUp from "@material-ui/icons/ArrowDropUp";
 import Button from '@material-ui/core/Button';
 import axios from 'axios'
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
-import {useHistory} from 'react-router-dom'
+// import {useHistory} from 'react-router-dom'
 
 export function Community(props) {
     
 const [communities, setCommunities] = useState([]);
 
- const history = useHistory();
+ //const history = useHistory();
 
 const fetchCommunities = () => {
   axios.get("http://localhost:8080/api/communities").then(res => {
@@ -20,10 +20,10 @@ const fetchCommunities = () => {
     console.log(err);
   })
 }
-function handleBaba(){
-  console.log("yey")
-  history.push("/submit")
-}
+// function handleBaba(){
+//   console.log("yey")
+//   history.push("/submit")
+// }
 
 useEffect(() => {
   fetchCommunities()
@@ -39,7 +39,7 @@ useEffect(() => {
           <div key={community.id} className="community hoverable">
             <span style={{fontWeight:550}}>{index + 1}</span>
             <ArrowDropUp />
-            <a  href="/login" style={{color: "#000000"}}><span onClick={handleBaba} className="name">c/{community.name}</span></a>
+            <a  href="/home" style={{color: "#000000"}}><span className="name">c/{community.name}</span></a>
             <span className="ml-auto mr-3"><PeopleAltIcon className="mr-2"/>0 Members</span>
             
           </div>

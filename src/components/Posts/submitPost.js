@@ -29,8 +29,8 @@ export function Submitpost(props) {
      axios.get("http://localhost:8080/api/communities").then(res => {
          console.log(res);
          setCommunities(res.data);
-     }).catch(err => {
-       console.log(err)
+     }).catch(error => {
+       console.log(error)
      })
  }
 
@@ -40,8 +40,8 @@ export function Submitpost(props) {
          console.log("file uploaded successfully");
          setSuccess(true)
          console.log(res);
-     }).catch(err => {
-         console.log(err);
+     }).catch(error => {
+         console.log(error);
          setError(true)
      })
 

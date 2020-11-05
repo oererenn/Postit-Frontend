@@ -191,9 +191,9 @@ const user = JSON.parse(localStorage.getItem('user'))
           >
            
           </IconButton>
-          <Typography className={classes.title} variant="h6" noWrap>
+          <a href ="/home" style={{color: "#ffffff"}}><Typography className={classes.title} variant="h6" noWrap>
             Post-It
-          </Typography>
+          </Typography></a>
           <div className={classes.search}>
             <div className={classes.searchIcon}>
               <SearchIcon />

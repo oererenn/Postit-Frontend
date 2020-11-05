@@ -13,6 +13,7 @@ import axios from 'axios'
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import IconButton from '@material-ui/core/IconButton';
+import {useHistory} from 'react-router-dom'
 
 
 const useStyles = makeStyles({
@@ -29,10 +30,11 @@ const useStyles = makeStyles({
         },
     },
 });
+
 export function Posts(props) {
 const classes = useStyles();
  const [posts, setPosts] = useState([]);
-
+const history = useHistory();
 
 
  const fetchPosts = () => {
@@ -47,6 +49,10 @@ const classes = useStyles();
  useEffect(() => {
      fetchPosts()
  }, []);
+
+ function gotoPost(postId){
+history.push(`/post/${postId}`)
+ }
 
 if(posts.length === 0){
     return <div className="d-flex" style={{justifyContent:"center",justifyItems:"center"}}><h4>No Posts</h4></div>
@@ -66,7 +72,7 @@ if(posts.length === 0){
         </Box>
         </div>
         <div className ="w-100">
-      <CardActionArea className="w-100">
+      <CardActionArea onClick={() => gotoPost(post.id)} className="w-100">
         {post.image ? <CardMedia
           component="img"
           alt=""
@@ -88,7 +94,7 @@ if(posts.length === 0){
      
       <CardActions className="d-flex">
         <Button startIcon={<ChatBubbleIcon/>}  style={{fontWeight:550,textTransform:"none",fontSize:12}}>
-        {post.voteCount||0}  Comments
+        {post.comments.length||0}  Comments
         </Button>
             <div className="ml-auto" style={{fontWeight:550,textTransform:"none",fontSize:13, marginBottom:3.8}}>Posted by on {post.createdAt} by <a href="/login" style={{color: "#202020",fontWeight:600}}>{post.user.username}</a></div>
       </CardActions> </div>

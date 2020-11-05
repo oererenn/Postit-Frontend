@@ -78,8 +78,8 @@ AuthService.register(data.username, data.email, data.password).then(res => {
    } else {
      setError(true)
    }
- }).catch(err => {
-
+ }).catch(error => {
+console.log(error);
 
  })
     }else{

@@ -8,6 +8,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import SubmitPostPage from './components/Posts/submitPostPage'
 import LoginPage from './components/Login&Register/loginPage'
 import RegisterPage from './components/Login&Register/registerPage'
+import PostPage from './components/Posts/postPage'
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         <Route path = "/submit" component={SubmitPostPage}></Route>
         <Route path = "/login" component={LoginPage}></Route>
         <Route path = "/register" component={RegisterPage}></Route>
+        <Route path = "/post/:postId" component={PostPage}></Route>
       </Switch>
 
       </Router>

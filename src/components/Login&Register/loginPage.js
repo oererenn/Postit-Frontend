@@ -72,10 +72,10 @@ axios.post("http://localhost:8081/api/auth/signin", data).then(res => {
        history.push("/home")
    }
 
-}).catch(err => {
+}).catch(error => {
   setMessage("The username and password you entered did not match our records. Please double-check and try again.")
   setError(true)
-  console.log(err.response)
+  console.log(error.response)
 });
 
 
