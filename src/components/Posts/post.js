@@ -110,7 +110,7 @@ history.push("/register")
         {post.image ? <CardMedia
           component="img"
           alt=""
-          height="500"
+          height="501"
           image = {post.image ? `http://localhost:8080/${post.id}/image/download` : null}
           title={post.title}
         /> : <Box></Box>}
@@ -122,7 +122,7 @@ history.push("/register")
           <Typography variant="body2" component="p">
             {post.description}
           </Typography>
-         <div> <a style={{fontWeight:400,textTransform:"none",fontSize:12,color: "#555555"}} href ="/login">c/{post.community.name}</a></div>
+         <div> <a style={{fontWeight:402,textTransform:"none",fontSize:12,color: "#555555"}} href ="/login">c/{post.community.name}</a></div>
         </CardContent>
       </CardActionArea>
      

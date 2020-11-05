@@ -18,7 +18,7 @@ import MuiAlert from '@material-ui/lab/Alert';
 import {useHistory} from 'react-router-dom'
 import axios from "axios";
 
-function Copyright() {
+function CopyrightLogin() {
   return (
     <Typography variant="body2" color="textSecondary" align="center">
       {'Post-It © '}
@@ -30,12 +30,12 @@ function Copyright() {
   );
 }
 
-function Alert(props) {
+function AlertLogin(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
 }
 
 
-const useStyles = makeStyles((theme) => ({
+const useStylesLogin = makeStyles((theme) => ({
   paper: {
     marginTop: theme.spacing(8),
     display: 'flex',
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export function SignIn(probs) {
-  const classes = useStyles();
+  const classes = useStylesLogin();
 
   const { register, handleSubmit} = useForm();
   const[message,setMessage] = useState("");
@@ -157,17 +157,17 @@ axios.post("http://localhost:8081/api/auth/signin", data).then(res => {
         </form>
       </div>
       <Box mt={8}>
-        <Copyright />
+        <CopyrightLogin />
       </Box>
       <Snackbar open={success} autoHideDuration={5000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="success">
+        <AlertLogin onClose={handleClose} severity="success">
           {message}
-        </Alert>
+        </AlertLogin>
     </Snackbar>
     <Snackbar open={err} autoHideDuration={5000} onClose={handleClose}>
-        <Alert onClose={handleClose} severity="error">
+        <AlertLogin onClose={handleClose} severity="error">
           {message}
-        </Alert>
+        </AlertLogin>
     </Snackbar>
     </Container>
   );
