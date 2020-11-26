@@ -4,13 +4,12 @@ import ArrowDropUp from "@material-ui/icons/ArrowDropUp";
 import Button from '@material-ui/core/Button';
 import axios from 'axios'
 import PeopleAltIcon from '@material-ui/icons/PeopleAlt';
-// import {useHistory} from 'react-router-dom'
+import {useHistory} from 'react-router-dom'
 
 export function Community(props) {
     
 const [communities, setCommunities] = useState([]);
-
- //const history = useHistory();
+const history = useHistory();
 
 const fetchCommunities = () => {
   axios.get("http://localhost:8080/api/communities").then(res => {
@@ -20,14 +19,19 @@ const fetchCommunities = () => {
     console.log(err);
   })
 }
-// function handleBaba(){
-//   console.log("yey")
-//   history.push("/submit")
-// }
+
 
 useEffect(() => {
   fetchCommunities()
 }, []);
+
+function gotoCommunity(communityId) {
+  history.push(`/community/${communityId}`)
+}
+
+function gotoTopCommunities() {
+  history.push(`/communities/leaderboard`)
+}
 
     return (
         <div className="community-section">
@@ -35,11 +39,11 @@ useEffect(() => {
         <span className="hoverable">Top Growing Communities</span>
       </div>
       <div className="communities-wrapper">
-        {communities.map((community, index) => (
+        {communities.slice(0,5).map((community, index) => (
           <div key={community.id} className="community hoverable">
             <span style={{fontWeight:550}}>{index + 1}</span>
             <ArrowDropUp />
-            <a  href="/home" style={{color: "#000000"}}><span className="name">c/{community.name}</span></a>
+            <div onClick={() => gotoCommunity(community.id)} style={{color: "#000000"}}><span className="name">c/{community.name}</span></div>
             <span className="ml-auto mr-3"><PeopleAltIcon className="mr-2"/>0 Members</span>
             
           </div>
@@ -48,7 +52,7 @@ useEffect(() => {
       <div className="action-buttons">
         
         <div className="secondary-buttons d-flex">
-           <Button size="small" className="ml-auto" style={{fontWeight:550,textTransform:"none",fontSize:12}} variant="contained" color="primary">
+           <Button onClick={() => gotoTopCommunities()} size="small" className="ml-auto" style={{fontWeight:550,textTransform:"none",fontSize:12}} variant="contained" color="primary">
   More
 </Button>
           

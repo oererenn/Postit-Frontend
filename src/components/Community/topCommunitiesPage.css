@@ -1,0 +1,181 @@
+.topCom-page-grid-container {
+
+        height: 100%;
+        display: grid;
+        grid-column-gap: 1em;
+        grid-row-gap: 2em;
+        grid-template-columns: repeat(12, 1fr);
+        background-color: rgba(248, 249, 250);
+        justify-content: center;
+
+
+
+        grid-template-areas:
+            "h h h h h h h h h h h h"
+            ". . . c c c c s s s . ."
+            ". . . c c c c . . . . ."
+
+    }
+
+
+
+    .topCom-page-side-menu {
+        grid-area: s;
+
+
+         height: 100%;
+        display: grid;
+        grid-column-gap: 1em;
+        grid-row-gap: 2em;
+        grid-template-columns: repeat(2, 1fr);
+
+
+
+        grid-template-areas:
+            "r r"
+            "f f" 
+
+
+
+
+    }
+
+  .topCom-page-rulebar{
+      grid-area: r;
+  }
+   .topCom-page-footer{
+      grid-area: f;
+  }
+
+    .topCom-page-page-content {
+        grid-area: c;
+        
+
+    }
+
+
+    .topCom-page-posts{
+        grid-area: post;
+    }
+
+    .myNav {
+        grid-area: h;
+
+    }
+
+
+    @media screen and (max-width: 1500px) {
+        .topCom-page-grid-container {
+
+
+            grid-template-areas:
+                "h h h h h h h h h h h h"
+                ". . c c c c c s s s . ."
+                ". . c c c c c . . . . ."
+
+        }
+
+
+
+
+
+    }
+
+    @media screen and (max-width: 1300px) {
+        .topCom-page-grid-container {
+
+
+            grid-template-areas:
+                "h h h h h h h h h h h h"
+                ". c c c c c c s s s s ."
+                ". c c c c c c . . . . ."
+
+        }
+
+
+
+
+
+    }
+
+      @media screen and (max-width: 800px) {
+        .topCom-page-grid-container {
+
+        
+            grid-template-areas:
+                "h h h h h h h h h h h h"
+                ". c c c c c c c c c c ."
+                ". c c c c c c c c c c ."
+
+        }
+
+
+    .topCom-page-side-menu{display: none;}
+
+
+    }
+
+
+     @media screen and (max-width: 1000px) {
+        .topCom-page-grid-container {
+        justify-content: center;
+        justify-items: center;
+       
+            grid-template-areas:
+                "h h h h h h h h h h h h h"
+                ". c c c c c c c c c c . ."
+                ". c c c c c c c c c c . ."
+            
+
+        }
+
+        .topCom-page-side-menu{display: none;}
+      
+    }
+
+     @media screen and (max-width: 600px) {
+        .topCom-page-grid-container {
+
+        
+            grid-template-areas:
+                "h h h h h h h h h h h h"
+                "c c c c c c c c c c c c"
+                "c c c c c c c c c c c c"
+
+        }
+
+         .topCom-page-page-content {
+        
+        grid-template-areas:
+            "post post"
+            "post post"
+
+    }
+
+       .topCom-page-posts{
+           margin: 5px;
+       }
+
+    .topCom-page-side-menu{display: none;}
+  .topCom-page-filterBar{display: none;}
+
+    }
+
+    
+    @media screen and (min-width: 2500px) {
+        .topCom-page-grid-container {
+
+         grid-template-columns: repeat(13, 1fr);
+            grid-template-areas:
+                "h h h h h h h h h h h h h"
+                ". . . . c c c s s . . . ."
+                ". . . . c c c . . . . . ."
+
+        }
+
+        
+    }
+
+
+
+    

@@ -1,8 +1,8 @@
 import React from 'react'
-
+import './ruleBar.css'
 export function Rulebar(props) {
 
-    var topics = [{
+    var rules = [{
         rule: "Remember the human"
     }, {
       rule: "Behave like you would in real life"
@@ -14,16 +14,16 @@ export function Rulebar(props) {
       rule: "Read the community’s rules"
     }]
 return (
-        <div className="topic-section">
+        <div className="rule-section">
       <div className="title">
         <span className="hoverable">Posting on Post-It</span>
       </div>
-      <div className="topics-wrapper">
-        {topics.map((topic, index) => (
-          <div key={index} className="topic hoverable">
+      <div className="rules-wrapper">
+        {rules.map((rule, index) => (
+          <div key={index} className="rule hoverable">
             <span style={{fontWeight:550}}>{index + 1}</span>
             -
-            <span className="name">{topic.rule}</span>
+            <span className="name">{rule.rule}</span>
           </div>
         ))}
       </div>

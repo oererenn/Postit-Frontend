@@ -1,0 +1,63 @@
+.communityAbout-section {
+  background-color: white;
+  border: 1px solid rgb(200, 200, 200);
+  border-radius: 6px;
+}
+
+.communityAbout-section .title {
+  position: relative;
+  border-top-right-radius: 5px;
+  border-top-left-radius: 5px;
+  background-color: rgba(63, 81, 181);
+  height: 50px;
+}
+
+.communityAbout-section .title > span {
+  position: absolute;
+
+  bottom: 10px;
+  left: 15px;
+
+  color:white;
+  font-weight: 600;
+}
+
+.communityAbout-section .communityAbouts-wrapper .communityAbout {
+  display: flex;
+  align-items: center;
+  padding: 8px 0px;
+  padding-left: 25px;
+  border-top: 1px solid rgb(240, 240, 240);
+}
+
+.communityAbout-section .communityAbouts-wrapper .communityAbout svg {
+  color: rgb(0, 180, 0);
+}
+
+.communityAbout-section .communityAbouts-wrapper .communityAbout img {
+  max-width: 32px;
+  min-width: 32px;
+  max-height: 32px;
+  min-height: 32px;
+  border-radius: 50%;
+}
+
+.communityAbout-section .communityAbouts-wrapper .communityAbout .name {
+  font-weight: 600;
+}
+
+.communityAbout-section .action-buttons {
+    padding: 0px 15px;
+}
+
+.communityAbout-section .action-buttons > .primary-button {
+    margin-top: 1px;
+}
+
+.communityAbout-section .action-buttons .secondary-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    margin: 15px 0px;
+}

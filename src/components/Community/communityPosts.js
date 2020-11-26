@@ -1,4 +1,4 @@
-import React,{useEffect,useState} from 'react'
+import React, { useEffect, useState } from 'react'
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
 import CardActionArea from '@material-ui/core/CardActionArea';
@@ -13,9 +13,8 @@ import axios from 'axios'
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import IconButton from '@material-ui/core/IconButton';
-import {useHistory} from 'react-router-dom'
-
-
+import { useHistory } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 const useStyles = makeStyles({
     upvote: {
         color: "",
@@ -31,43 +30,42 @@ const useStyles = makeStyles({
     },
 });
 
-export function Posts(props) {
-const classes = useStyles();
- const [posts, setPosts] = useState([]);
-const history = useHistory();
+export function Communityposts(props) {
+    const classes = useStyles();
+    const [posts, setPosts] = useState([]);
+    const history = useHistory();
+    const { communityId } = useParams();
+    
+    const fetchCommunityPosts = async (communityId) => {
+        await axios.get(`http://localhost:8080/api/communities/${communityId}/posts`).then(res => {
+            console.log(res);
+            setPosts(res.data);
+        }).catch(err => {
+            console.log(err)
+        })
+    }
+    console.log(communityId)
+    useEffect(() => {
+        fetchCommunityPosts(communityId)
+    }, [communityId]);
 
+    function gotoPost(postId) {
+        history.push(`/post/${postId}`)
+    }
 
- const fetchPosts = () => {
-    axios.get("http://localhost:8080/api/posts").then(res => {
-        console.log(res);
-        setPosts(res.data);
-    }).catch(err => {
-      console.log(err)
-    })
- }
+    if (posts.length === 0) {
+        return <div className="d-flex" style={{ justifyContent: "center", justifyItems: "center" }}><h4>No Posts</h4></div>
+    } else {
 
- useEffect(() => {
-     fetchPosts()
- }, []);
-
- function gotoPost(postId){
-history.push(`/post/${postId}`)
- }
-
-if(posts.length === 0){
-    return <div className="d-flex" style={{justifyContent:"center",justifyItems:"center"}}><h4>No Posts</h4></div>
-}else{
-
-
-    return (
-        <div>
+        return (
+            <div>
             {posts.map(post=>
     <Card key={post.id} className="mb-3 h-100 d-flex">
         <div style={{backgroundColor:"#F8F9FA"}} className="d-flex flex-row align-items-start justify-content-center">
         <Box style={{minWidth:35}}>
-         <IconButton aria-label="upvote"><ArrowUpwardIcon className={classes.upvote}/></IconButton>
+         <IconButton><ArrowUpwardIcon  className={classes.upvote}/></IconButton>
          <div style={{fontWeight:500,marginLeft:19}}>{post.voteCount|| 0}</div>
-         <IconButton aria-label="downvote"><ArrowDownwardIcon className={classes.downvote}/></IconButton>
+         <IconButton><ArrowDownwardIcon className={classes.downvote}/></IconButton>
 
         </Box>
         </div>
@@ -101,8 +99,8 @@ if(posts.length === 0){
     </Card>)}
          
     </div>
-    )
+        )
     }
 }
 
-export default Posts
+export default Communityposts

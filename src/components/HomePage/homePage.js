@@ -12,8 +12,8 @@ export function Homepage(props) {
         <div className ="home-page-grid-container">
          <div className = "myNav w-100"><NavBar className="w-100"/></div>
          <div className="home-page-page-content">
+             <div className ="home-page-filterBar"><FilterBar/></div>
          <div className ="home-page-posts"><Posts/></div>
-         <div className ="home-page-filterBar"><FilterBar/></div>
          </div>
          <div className="home-page-side-menu"> 
         <div className ="home-page-community"><Community/></div>

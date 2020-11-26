@@ -9,6 +9,8 @@ import SubmitPostPage from './components/Posts/submitPostPage'
 import LoginPage from './components/Login&Register/loginPage'
 import RegisterPage from './components/Login&Register/registerPage'
 import PostPage from './components/Posts/postPage'
+import CommunityPage from './components/Community/communityPage'
+import TopCommunitesPage from './components/Community/topCommunitiesPage'
 
 
 function App() {
@@ -22,6 +24,8 @@ function App() {
         <Route path = "/login" component={LoginPage}></Route>
         <Route path = "/register" component={RegisterPage}></Route>
         <Route path = "/post/:postId" component={PostPage}></Route>
+        <Route path = "/community/:communityId" component={CommunityPage}></Route>
+        <Route path = "/communities/leaderboard" component={TopCommunitesPage}></Route>
       </Switch>
 
       </Router>

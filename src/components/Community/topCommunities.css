@@ -1,0 +1,63 @@
+.topCom-section {
+  background-color: white;
+  border-radius: 6px;
+  border: 1px solid rgb(200, 200, 200);
+}
+
+.topCom-section .title {
+  position: relative;
+  border-top-right-radius: 5px; 
+  border-top-left-radius: 5px;
+  background-color: rgba(63, 81, 181);
+  height: 50px;
+}
+
+.topCom-section .title > span {
+  position: absolute;
+
+  bottom: 10px;
+  left: 15px;
+
+  color:white;
+  font-weight: 600;
+}
+
+.topCom-section .communities-wrapper .topCom {
+  display: flex;
+  align-items: center;
+  padding: 8px 0px;
+  padding-left: 25px;
+  border-top: 1px solid rgb(240, 240, 240);
+}
+
+.topCom-section .communities-wrapper .topCom svg {
+  color: rgb(0, 180, 0);
+}
+
+.topCom-section .communities-wrapper .topCom img {
+  max-width: 32px;
+  min-width: 32px;
+  max-height: 32px;
+  min-height: 32px;
+  border-radius: 50%;
+}
+
+.topCom-section .communities-wrapper .topCom .name {
+  font-weight: 600;
+}
+
+.topCom-section .action-buttons {
+    padding: 0px 15px;
+}
+
+.topCom-section .action-buttons > .primary-button {
+    margin-top: 1px;
+}
+
+.topCom-section .action-buttons .secondary-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    margin: 15px 0px;
+}

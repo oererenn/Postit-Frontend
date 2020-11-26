@@ -1,11 +1,28 @@
-import React from 'react'
+import React,{useEffect,useState} from 'react'
 import ArrowDropUp from "@material-ui/icons/ArrowDropUp";
 import Button from '@material-ui/core/Button';
+import axios from 'axios'
 import './topics.css'
+
 
 export function Topics(props) {
 
-var topics =[{name:"Sports"}]
+const [topics, setTopics] = useState([]);
+
+
+const fetchTopics = () => {
+  axios.get("http://localhost:8080/topics").then(res => {
+    console.log(res);
+    setTopics(res.data);
+  }).catch(err => {
+    console.log(err);
+  })
+}
+
+
+useEffect(() => {
+  fetchTopics()
+}, []);
 
     return (
         <div className="topic-section">
@@ -13,7 +30,7 @@ var topics =[{name:"Sports"}]
         <span className="hoverable">Popular Topics</span>
       </div>
       <div className="topics-wrapper">
-        {topics.map((topic, index) => (
+        {topics.slice(0,5).map((topic, index) => (
           <div key={index} className="topic hoverable">
             <span style={{fontWeight:550}}>{index + 1}</span>
             <ArrowDropUp />
