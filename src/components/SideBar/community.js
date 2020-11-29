@@ -41,7 +41,7 @@ function gotoTopCommunities() {
       <div className="communities-wrapper">
         {communities.slice(0,5).map((community, index) => (
           <div key={community.id} className="community hoverable">
-            <span style={{fontWeight:550}}>{index + 1}</span>
+            <span style={{fontWeight:400}}>{index + 1}</span>
             <ArrowDropUp />
             <div onClick={() => gotoCommunity(community.id)} style={{color: "#000000"}}><span className="name">c/{community.name}</span></div>
             <span className="ml-auto mr-3"><PeopleAltIcon className="mr-2"/>0 Members</span>

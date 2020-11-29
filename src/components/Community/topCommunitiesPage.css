@@ -118,8 +118,7 @@
 
      @media screen and (max-width: 1000px) {
         .topCom-page-grid-container {
-        justify-content: center;
-        justify-items: center;
+        
        
             grid-template-areas:
                 "h h h h h h h h h h h h h"

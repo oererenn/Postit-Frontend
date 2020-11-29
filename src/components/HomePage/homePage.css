@@ -57,12 +57,17 @@
         grid-column-gap: 1em;
         grid-row-gap: 2em;
         grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 255px;
+   
         
 
 
         grid-template-areas:
             "filter filter"
             "post post"
+            
+            
+
 
     }
 
@@ -77,6 +82,7 @@
 
     .home-page-filterBar{
         grid-area: filter;
+        
     }
 
     .myNav {
