@@ -181,7 +181,7 @@ fetchPostComment(postId)
                   component="img"
                   alt=""
                   height="501"
-                  image={post.image ? `http://localhost:8080/${post.id}/image/download` : null}
+                  image={post.image ? `http://localhost:8080/api/${post.id}/image/download` : null}
                   title={post.title}
                 /> : <Box></Box>}
 
@@ -215,13 +215,13 @@ fetchPostComment(postId)
             inputRef={register}
             required
             name="text"
-            id="outlined-multiline-static"
+            id="commentBox"
             label="What are your thoughts?"
             multiline
             rows={8}
             variant="outlined"
           />
-          <Button type="submit" className="mt-3" size="small" variant="contained" color="primary">
+          <Button id="commentButton" type="submit" className="mt-3" size="small" variant="contained" color="primary">
             Comment
 </Button></form>
       </div> : <div><Card className="h-100" variant="outlined">
@@ -261,7 +261,7 @@ fetchPostComment(postId)
                 </div>
               </Typography>
               <Typography>
-                {comment.text}
+                <div id="commentText">{comment.text}</div>
               </Typography>
 
             </CardContent>

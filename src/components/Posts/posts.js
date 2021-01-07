@@ -107,11 +107,11 @@ if(posts.length === 0){
     return (
         <div>
             {posts.map(post=>
-    <Card key={post.id} className="mb-3 h-100 d-flex">
+    <Card id="postCard" key={post.id} className="mb-3 h-100 d-flex">
         <div style={{backgroundColor:"#F8F9FA"}} className="d-flex flex-row align-items-start justify-content-center">
         <Box style={{minWidth:35}}>
          <IconButton id="upVote" onClick={()=>UpvoteF(post.id)} aria-label="upvote"><ArrowUpwardIcon className={classes.upvote}/></IconButton>
-         <div style={{fontWeight:500,marginLeft:19}}>{post.voteCount|| 0}</div>
+         <div id="voteCount" style={{fontWeight:500,marginLeft:19}}>{post.voteCount|| 0}</div>
          <IconButton id="downVote" onClick={()=>DownvoteF(post.id)} aria-label="downvote"><ArrowDownwardIcon className={classes.downvote}/></IconButton>
 
         </Box>
@@ -122,7 +122,7 @@ if(posts.length === 0){
           component="img"
           alt=""
           height="300"
-          image = {post.image ? `http://localhost:8080/${post.id}/image/download` : null}
+          image = {post.image ? `http://localhost:8080/api/${post.id}/image/download` : null}
           title={post.title}
         /> : <Box></Box>}
         

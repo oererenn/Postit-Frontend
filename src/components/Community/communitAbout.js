@@ -71,7 +71,7 @@ useEffect(() => {
           <div className="pt-3">  <span className=""><PeopleAltIcon style={{ color:"#00B400"}} className="mr-2"/>{community.memberCount ||0} Members</span></div>
           <div><CakeIcon style={{ color: "#00B400" }} /><span className="pl-2">{String(props.createdAt).substring(0,10) || "November 12, 2020"}</span></div>
           <Divider />
-        {user ? <div onClick={addUserToCommunity} className="pt-3"><Button size="small" variant="contained" color="primary">
+        {user ? <div id="joinButton" onClick={addUserToCommunity} className="pt-3"><Button size="small" variant="contained" color="primary">
             {buttonToggle}
 </Button></div>:null}
           

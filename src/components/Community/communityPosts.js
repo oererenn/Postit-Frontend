@@ -120,7 +120,7 @@ export function Communityposts(props) {
           component="img"
           alt=""
           height="300"
-          image = {post.image ? `http://localhost:8080/${post.id}/image/download` : null}
+          image = {post.image ? `http://localhost:8080/api/${post.id}/image/download` : null}
           title={post.title}
         /> : <Box></Box>}
         
