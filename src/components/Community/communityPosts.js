@@ -31,14 +31,14 @@ const useStyles = makeStyles({
 
 export function Communityposts(props) {
     const classes = useStyles();
-    const [posts, setPosts] = useState([]);
+    const [communityPosts, setCommunityPostsPosts] = useState([]);
     const history = useHistory();
     const { communityId } = useParams();
     const user = JSON.parse(localStorage.getItem('user'));
     const fetchCommunityPosts = async (communityId) => {
         await axios.get(`http://localhost:8080/api/posts/community/${communityId}`).then(res => {
        
-            setPosts(res.data);
+            setCommunityPostsPosts(res.data);
         }).catch(err => {
             console.log(err)
         })
@@ -92,19 +92,19 @@ export function Communityposts(props) {
         fetchCommunityPosts(communityId)
     }, [communityId]);
 
-    function gotoPost(postId) {
+    function goPost(postId) {
         history.push(`/post/${postId}`)
     }
 
 
 
-    if (posts.length === 0) {
-        return <div className="d-flex" style={{ justifyContent: "center", justifyItems: "center" }}><h4>No Posts</h4></div>
+    if (communityPosts.length === 0) {
+        return <div id="noPost" className="d-flex" style={{ justifyContent: "center", justifyItems: "center" }}><h4>No Posts</h4></div>
     } else {
 
         return (
             <div>
-            {posts.map(post=>
+            {communityPosts.map(post=>
     <Card key={post.id} className="mb-3 h-100 d-flex">
         <div style={{backgroundColor:"#F8F9FA"}} className="d-flex flex-row align-items-start justify-content-center">
         <Box style={{minWidth:35}}>
@@ -115,7 +115,7 @@ export function Communityposts(props) {
         </Box>
         </div>
         <div className ="w-100">
-      <CardActionArea onClick={() => gotoPost(post.id)} className="w-100">
+      <CardActionArea onClick={() => goPost(post.id)} className="w-100">
         {post.image ? <CardMedia
           component="img"
           alt=""
