@@ -115,7 +115,7 @@ export function Communityposts(props) {
         </Box>
         </div>
         <div className ="w-100">
-      <CardActionArea onClick={() => goPost(post.id)} className="w-100">
+      <CardActionArea id="cardArea" onClick={() => goPost(post.id)} className="w-100">
         {post.image ? <CardMedia
           component="img"
           alt=""
@@ -124,7 +124,7 @@ export function Communityposts(props) {
           title={post.title}
         /> : <Box></Box>}
         
-        <CardContent>
+        <CardContent id="cardContent">
           <Typography gutterBottom variant="h5" component="h2">
             {post.title}
           </Typography>
@@ -136,10 +136,10 @@ export function Communityposts(props) {
       </CardActionArea>
      
       <CardActions className="d-flex">
-        {/* <Button startIcon={<ChatBubbleIcon/>}  style={{fontWeight:550,textTransform:"none",fontSize:12}}>
+        {/* <Button id="commentIcon" startIcon={<ChatBubbleIcon/>}  style={{fontWeight:550,textTransform:"none",fontSize:12}}>
         {0}  Comments
         </Button> */}
-            <div className="ml-auto" style={{fontWeight:550,textTransform:"none",fontSize:13, marginBottom:3.8}}>Posted by on {String(post.createdAt).substring(0,10)} by <a href="/login" style={{color: "#202020",fontWeight:600}}>{post.user.username}</a></div>
+            <div id="communityPostsInfo" className="ml-auto" style={{fontWeight:550,textTransform:"none",fontSize:13, marginBottom:3.8}}>Posted by on {String(post.createdAt).substring(0,10)} by <a href="/login" style={{color: "#202020",fontWeight:600}}>{post.user.username}</a></div>
       </CardActions> </div>
     </Card>)}
          

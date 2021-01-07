@@ -33,7 +33,7 @@ export function Posts(props) {
 const classes = useStyles();
  const [posts, setPosts] = useState([]);
 const history = useHistory();
-const user = JSON.parse(localStorage.getItem('user'));
+const currentUser = JSON.parse(localStorage.getItem('user'));
 
  const fetchPosts = () => {
     axios.get("http://localhost:8080/api/posts").then(res => {
@@ -44,12 +44,12 @@ const user = JSON.parse(localStorage.getItem('user'));
     })
  }
 
- function Upvote(postId){
-   if(!user){
+ function UpvoteF(postId){
+   if (!currentUser) {
      history.push(`/login`)
    }else{
 let voteData = {
-  userId: user.id,
+  userId: currentUser.id,
   postId: postId,
   voteType: "UP_VOTE"
 }
@@ -66,12 +66,12 @@ axios.post("http://localhost:8080/api/votes", voteData, {
 
  }
 
- function Downvote(postId) {
-    if (!user) {
+ function DownvoteF(postId) {
+    if (!currentUser) {
       history.push(`/login`)
     }else{
 let voteData = {
-  userId: user.id,
+  userId: currentUser.id,
   postId: postId,
   voteType: "DOWN_VOTE"
 }
@@ -110,9 +110,9 @@ if(posts.length === 0){
     <Card key={post.id} className="mb-3 h-100 d-flex">
         <div style={{backgroundColor:"#F8F9FA"}} className="d-flex flex-row align-items-start justify-content-center">
         <Box style={{minWidth:35}}>
-         <IconButton onClick={()=>Upvote(post.id)} aria-label="upvote"><ArrowUpwardIcon className={classes.upvote}/></IconButton>
+         <IconButton id="upVote" onClick={()=>UpvoteF(post.id)} aria-label="upvote"><ArrowUpwardIcon className={classes.upvote}/></IconButton>
          <div style={{fontWeight:500,marginLeft:19}}>{post.voteCount|| 0}</div>
-         <IconButton onClick={()=>Downvote(post.id)} aria-label="downvote"><ArrowDownwardIcon className={classes.downvote}/></IconButton>
+         <IconButton id="downVote" onClick={()=>DownvoteF(post.id)} aria-label="downvote"><ArrowDownwardIcon className={classes.downvote}/></IconButton>
 
         </Box>
         </div>
@@ -138,10 +138,7 @@ if(posts.length === 0){
       </CardActionArea>
      
       <CardActions className="d-flex">
-        {/* <Button startIcon={<ChatBubbleIcon/>}  style={{fontWeight:550,textTransform:"none",fontSize:12}}>
-        {0}  Comments
-        </Button> */}
-            <div className="ml-auto" style={{fontWeight:550,textTransform:"none",fontSize:13, marginBottom:3.8}}>Posted by on {String(post.createdAt).substring(0,10)} by <a href="/login" style={{color: "#202020",fontWeight:600}}>{post.user.username}</a></div>
+            <div id="postInfo" className="ml-auto" style={{fontWeight:550,textTransform:"none",fontSize:13, marginBottom:3.8}}>Posted by on {String(post.createdAt).substring(0,10)} by <a href="/login" style={{color: "#202020",fontWeight:600}}>{post.user.username}</a></div>
       </CardActions> </div>
     </Card>)}
          
