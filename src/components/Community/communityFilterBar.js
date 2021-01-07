@@ -38,20 +38,20 @@ export function Communityfilterbar(props) {
           <div className="ml-3">c/{props.communityName}</div>
      </div>
 <div className="pt-2"><Divider/></div>
-      <div className="filter-container">
-        <div className="filter-element hoverable">
+      <div id="communityFilter" className="filter-container">
+        <div id="Hot" className="filter-element hoverable">
           <Whatshot />
           <span>Hot</span>
         </div>
-        <div className="filter-element hoverable">
+        <div id="Everywhere" className="filter-element hoverable">
           <span>Everywhere</span>
           <ArrowDropDown />
         </div>
-        <div className="filter-element-secondary hoverable">
+        <div id="New" className="filter-element-secondary hoverable">
           <NewReleases />
           <span>New</span>
         </div>
-        <div className="filter-element-secondary hoverable">
+        <div id="Top" className="filter-element-secondary hoverable">
           <TrendingUp />
           <span>Top</span>
         </div>

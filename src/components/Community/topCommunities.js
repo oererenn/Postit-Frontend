@@ -7,12 +7,12 @@ import './topCommunities.css'
 import {useHistory} from 'react-router-dom'
 export function Topcommunities(props) {
     
-const [communities, setCommunities] = useState([]);
+const [thecommunities, settheCommunities] = useState([]);
 const history = useHistory();
-const fetchCommunities = () => {
+const fetchtheCommunities = () => {
     axios.get("http://localhost:8080/api/communities").then(res => {
         console.log(res);
-        setCommunities(res.data);
+        settheCommunities(res.data);
     }).catch(err => {
         console.log(err);
     })
@@ -20,11 +20,11 @@ const fetchCommunities = () => {
 
 
 useEffect(() => {
-    fetchCommunities()
+    fetchtheCommunities()
 }, []);
 
 
-function gotoCommunity(communityId) {
+function goCommunity(communityId) {
     history.push(`/community/${communityId}`)
 }
 
@@ -34,11 +34,11 @@ function gotoCommunity(communityId) {
         <span className="hoverable">Top Growing Communities</span>
       </div>
       <div className="communities-wrapper">
-        {communities.map((community, index) => (
+        {thecommunities.map((community, index) => (
           <div key={community.id} className="topCom hoverable">
             <span style={{fontWeight:550}}>{index + 1}</span>
             <ArrowDropUp />
-            <div onClick={() => gotoCommunity(community.id)} style={{color: "#000000"}}><span className="name">c/{community.name}</span></div>
+            <div onClick={() => goCommunity(community.id)} style={{color: "#000000"}}><span className="name">c/{community.name}</span></div>
             <span className="ml-auto mr-3"><PeopleAltIcon className="mr-2"/>{community.memberCount ||0} Members</span>
             
           </div>

@@ -25,11 +25,11 @@ useEffect(() => {
   fetchCommunities()
 }, []);
 
-function gotoCommunity(communityId) {
+function goCommunity(communityId) {
   history.push(`/community/${communityId}`)
 }
 
-function gotoTopCommunities() {
+function goTopCommunities() {
   history.push(`/communities/leaderboard`)
 }
 
@@ -43,7 +43,7 @@ function gotoTopCommunities() {
           <div key={community.id} className="community hoverable">
             <span style={{fontWeight:400}}>{index + 1}</span>
             <ArrowDropUp />
-            <div onClick={() => gotoCommunity(community.id)} style={{color: "#000000"}}><span className="name">c/{community.name}</span></div>
+            <div id="community" onClick={() => goCommunity(community.id)} style={{color: "#000000"}}><span className="name">c/{community.name}</span></div>
         <span className="ml-auto mr-3"><PeopleAltIcon className="mr-2"/>{community.memberCount||0} Members</span>
             
           </div>
@@ -52,7 +52,7 @@ function gotoTopCommunities() {
       <div className="action-buttons">
         
         <div className="secondary-buttons d-flex">
-           <Button onClick={() => gotoTopCommunities()} size="small" className="ml-auto" style={{fontWeight:550,textTransform:"none",fontSize:12}} variant="contained" color="primary">
+           <Button id="buttonperform" onClick={() => goTopCommunities()} size="small" className="ml-auto" style={{fontWeight:550,textTransform:"none",fontSize:12}} variant="contained" color="primary">
   More
 </Button>
           

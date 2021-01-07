@@ -35,7 +35,7 @@ export function Filterbar(props) {
           <span>Everywhere</span>
           <ArrowDropDown />
         </div>
-        <div className="filter-element-secondary2 hoverable">
+        <div id="new" className="filter-element-secondary2 hoverable">
           <NewReleases />
           <span>New</span>
         </div>
