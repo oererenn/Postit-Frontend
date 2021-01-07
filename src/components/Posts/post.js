@@ -106,6 +106,50 @@ fetchPostComment(postId)
     return null
   }
 
+  function Upvote(postId) {
+    if (!user) {
+      history.push(`/login`)
+    } else {
+      let voteData = {
+        userId: user.id,
+        postId: postId,
+        voteType: "UP_VOTE"
+      }
+
+      axios.post("http://localhost:8080/api/votes", voteData, {
+        headers: authHeader()
+      }).then(res => {
+        fetchPost(postId)
+      }).catch(error => {
+        console.log(error);
+      })
+    }
+
+
+  }
+
+  function Downvote(postId) {
+    if (!user) {
+      history.push(`/login`)
+    } else {
+      let voteData = {
+        userId: user.id,
+        postId: postId,
+        voteType: "DOWN_VOTE"
+      }
+
+
+      axios.post("http://localhost:8080/api/votes", voteData, {
+        headers: authHeader()
+      }).then(res => {
+        fetchPost(postId)
+      }).catch(error => {
+        console.log(error);
+      })
+    }
+
+  }
+
   function gotoSignup() {
     history.push("/register")
   }
@@ -125,9 +169,9 @@ fetchPostComment(postId)
           <Card key={post.id} className="mb-3 h-100 d-flex">
             <div style={{ backgroundColor: "#F8F9FA" }} className="d-flex flex-row align-items-start justify-content-center">
               <Box style={{ minWidth: 35 }}>
-                <IconButton><ArrowUpwardIcon className={classes.upvote} /></IconButton>
+                <IconButton onClick={()=>Upvote(post.id)} ><ArrowUpwardIcon className={classes.upvote} /></IconButton>
                 <div style={{ fontWeight: 500, marginLeft: 19 }}>{post.voteCount || 0}</div>
-                <IconButton><ArrowDownwardIcon className={classes.downvote} /></IconButton>
+                <IconButton onClick={()=>Downvote(post.id)}><ArrowDownwardIcon className={classes.downvote} /></IconButton>
 
               </Box>
             </div>
@@ -148,7 +192,7 @@ fetchPostComment(postId)
                   <Typography variant="body2" component="p">
                     {post.description}
                   </Typography>
-                  <div> <a style={{ fontWeight: 402, textTransform: "none", fontSize: 12, color: "#555555" }} href="/login">c/{post.community.name}</a></div>
+                  <div> <a style={{ fontWeight: 402, textTransform: "none", fontSize: 12, color: "#555555" }} href="/login">c/{post.community.name || "running"}</a></div>
                 </CardContent>
               </CardActionArea>
 

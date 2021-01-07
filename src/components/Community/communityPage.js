@@ -8,7 +8,6 @@ import CommunityAbout from './communitAbout'
 import axios from 'axios'
 import { useParams } from 'react-router-dom'
 import './communityPage.css'
-import CommunityService from '../../Service/CommunityService'
 export function Communitypage(props) {
     const [community, setCommunity] = useState([]);
     const { communityId } = useParams();

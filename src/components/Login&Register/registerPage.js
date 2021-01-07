@@ -115,7 +115,7 @@ const handleClose = (event, reason) => {
         <Typography component="h1" variant="h5">
           Sign up
         </Typography>
-        <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+        <form id="loginForm" className={classes.form} onSubmit={handleSubmit(onSubmit)}>
           <Grid container spacing={2}>
             <Grid item xs={12}>
               <TextField

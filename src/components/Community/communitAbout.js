@@ -6,7 +6,6 @@ import Divider from '@material-ui/core/Divider';
 import CakeIcon from '@material-ui/icons/Cake';
 import axios from 'axios'
 import authHeader from '../../Service/AuthHeader'
-import { Redirect } from 'react-router-dom'
 export function Communitabout(props) {
 
 const [community, setCommunity] = useState([]);

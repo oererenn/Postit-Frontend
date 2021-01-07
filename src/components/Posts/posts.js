@@ -5,10 +5,8 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import axios from 'axios'
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
@@ -59,9 +57,7 @@ let voteData = {
 axios.post("http://localhost:8080/api/votes", voteData, {
   headers: authHeader()
 }).then(res => {
-  console.log("up voted");
   fetchPosts()
-  console.log(res);
 }).catch(error => {
   console.log(error);
 })
@@ -84,9 +80,7 @@ let voteData = {
 axios.post("http://localhost:8080/api/votes", voteData, {
   headers: authHeader()
 }).then(res => {
-  console.log("down voted");
   fetchPosts()
-  console.log(res);
 }).catch(error => {
   console.log(error);
 })

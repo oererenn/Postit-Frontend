@@ -5,16 +5,15 @@ import CardActionArea from '@material-ui/core/CardActionArea';
 import CardActions from '@material-ui/core/CardActions';
 import CardContent from '@material-ui/core/CardContent';
 import CardMedia from '@material-ui/core/CardMedia';
-import Button from '@material-ui/core/Button';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
-import ChatBubbleIcon from '@material-ui/icons/ChatBubble';
 import axios from 'axios'
 import ArrowUpwardIcon from '@material-ui/icons/ArrowUpward';
 import ArrowDownwardIcon from '@material-ui/icons/ArrowDownward';
 import IconButton from '@material-ui/core/IconButton';
 import { useHistory } from 'react-router-dom'
 import { useParams } from 'react-router-dom'
+import authHeader from '../../Service/AuthHeader'
 const useStyles = makeStyles({
     upvote: {
         color: "",
@@ -35,7 +34,7 @@ export function Communityposts(props) {
     const [posts, setPosts] = useState([]);
     const history = useHistory();
     const { communityId } = useParams();
-    
+    const user = JSON.parse(localStorage.getItem('user'));
     const fetchCommunityPosts = async (communityId) => {
         await axios.get(`http://localhost:8080/api/posts/community/${communityId}`).then(res => {
        
@@ -43,6 +42,50 @@ export function Communityposts(props) {
         }).catch(err => {
             console.log(err)
         })
+    }
+
+    function Upvote(postId) {
+        if (!user) {
+            history.push(`/login`)
+        } else {
+            let voteData = {
+                userId: user.id,
+                postId: postId,
+                voteType: "UP_VOTE"
+            }
+
+            axios.post("http://localhost:8080/api/votes", voteData, {
+                headers: authHeader()
+            }).then(res => {
+                fetchCommunityPosts(communityId)
+            }).catch(error => {
+                console.log(error);
+            })
+        }
+
+
+    }
+
+    function Downvote(postId) {
+        if (!user) {
+            history.push(`/login`)
+        } else {
+            let voteData = {
+                userId: user.id,
+                postId: postId,
+                voteType: "DOWN_VOTE"
+            }
+
+
+            axios.post("http://localhost:8080/api/votes", voteData, {
+                headers: authHeader()
+            }).then(res => {
+                fetchCommunityPosts(communityId)
+            }).catch(error => {
+                console.log(error);
+            })
+        }
+
     }
    
     useEffect(() => {
@@ -52,6 +95,8 @@ export function Communityposts(props) {
     function gotoPost(postId) {
         history.push(`/post/${postId}`)
     }
+
+
 
     if (posts.length === 0) {
         return <div className="d-flex" style={{ justifyContent: "center", justifyItems: "center" }}><h4>No Posts</h4></div>
@@ -63,9 +108,9 @@ export function Communityposts(props) {
     <Card key={post.id} className="mb-3 h-100 d-flex">
         <div style={{backgroundColor:"#F8F9FA"}} className="d-flex flex-row align-items-start justify-content-center">
         <Box style={{minWidth:35}}>
-         <IconButton><ArrowUpwardIcon  className={classes.upvote}/></IconButton>
+         <IconButton onClick={()=>Upvote(post.id)}><ArrowUpwardIcon  className={classes.upvote}/></IconButton>
          <div style={{fontWeight:500,marginLeft:19}}>{post.voteCount|| 0}</div>
-         <IconButton><ArrowDownwardIcon className={classes.downvote}/></IconButton>
+         <IconButton onClick={()=>Downvote(post.id)}><ArrowDownwardIcon className={classes.downvote}/></IconButton>
 
         </Box>
         </div>
@@ -91,9 +136,9 @@ export function Communityposts(props) {
       </CardActionArea>
      
       <CardActions className="d-flex">
-        <Button startIcon={<ChatBubbleIcon/>}  style={{fontWeight:550,textTransform:"none",fontSize:12}}>
+        {/* <Button startIcon={<ChatBubbleIcon/>}  style={{fontWeight:550,textTransform:"none",fontSize:12}}>
         {0}  Comments
-        </Button>
+        </Button> */}
             <div className="ml-auto" style={{fontWeight:550,textTransform:"none",fontSize:13, marginBottom:3.8}}>Posted by on {String(post.createdAt).substring(0,10)} by <a href="/login" style={{color: "#202020",fontWeight:600}}>{post.user.username}</a></div>
       </CardActions> </div>
     </Card>)}

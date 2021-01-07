@@ -124,7 +124,7 @@ const handleClose = (event, reason) => {
           native
           inputProps={{
             name: 'communityId',
-            id: 'outlined-age-native-simple',
+            id: 'community',
           }}
         >
           <option aria-label="None" value="" />
@@ -133,13 +133,13 @@ const handleClose = (event, reason) => {
         </Select>
         </FormControl>
 
-        <TextField className="mb-3 w-100" required inputRef={register} name="title" id="outlined-basic" label="Title" variant="outlined" />
+        <TextField className="mb-3 w-100" required inputRef={register} name="title" id="title" label="Title" variant="outlined" />
 
         <TextField className="w-100"
           required
           inputRef={register}
           name="description"
-          id="outlined-multiline-static"
+          id="description"
           label="Description"
           multiline
           rows={8}
@@ -147,7 +147,7 @@ const handleClose = (event, reason) => {
         />
        
 
-        <Button type="submit" className="mt-3" size="small" variant="contained" color="primary">
+        <Button id="submitPostButton" type="submit" className="mt-3" size="small" variant="contained" color="primary">
   Post
 </Button>
 

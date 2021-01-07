@@ -101,7 +101,7 @@ axios.post("http://localhost:8080/api/auth/signin", data).then(res => {
         <Typography component="h1" variant="h5">
           Sign in
         </Typography>
-        <form className={classes.form} onSubmit={handleSubmit(onSubmit)}>
+        <form id="loginForm" className={classes.form} onSubmit={handleSubmit(onSubmit)}>
           <TextField
           inputRef={register}
           name="username"
@@ -132,6 +132,7 @@ axios.post("http://localhost:8080/api/auth/signin", data).then(res => {
           />
           
           <Button
+          id="loginButton"
             type="submit"
             fullWidth
             variant="contained"

@@ -6,10 +6,14 @@ import Community from '../SideBar/community'
 import FilterBar from './filterBar'
 import TopicBar from '../SideBar/topics'
 import Footer from '../SideBar/myFooter'
-
+import { Helmet } from 'react-helmet'
+const TITLE = 'Home'
 export function Homepage(props) {
     return (
         <div className ="home-page-grid-container">
+            <Helmet>
+          <title>{ TITLE }</title>
+        </Helmet>
          <div className = "myNav w-100"><NavBar className="w-100"/></div>
          <div className="home-page-page-content">
              <div className ="home-page-filterBar"><FilterBar/></div>
