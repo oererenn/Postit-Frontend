@@ -14,7 +14,7 @@ import MailIcon from '@material-ui/icons/Mail';
 import NotificationsIcon from '@material-ui/icons/Notifications';
 import MoreIcon from '@material-ui/icons/MoreVert';
 import {useHistory} from 'react-router-dom'
-
+import AddIcon from '@material-ui/icons/Add';
 
 const useStyles = makeStyles((theme) => ({
   grow: {
@@ -207,6 +207,7 @@ const user = JSON.parse(localStorage.getItem('user'))
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
+          {user ? <a href="/submit" style={{color: "#ffffff"}}><AddIcon/></a> : <a href="/login" style={{color: "#ffffff"}}>Login</a>}
           <div className={classes.grow} />
           {user ?<div className={classes.sectionDesktop}>
             <IconButton aria-label="show 4 new mails" color="inherit">

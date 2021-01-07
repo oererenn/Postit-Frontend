@@ -37,14 +37,14 @@ export function Communityposts(props) {
     const { communityId } = useParams();
     
     const fetchCommunityPosts = async (communityId) => {
-        await axios.get(`http://localhost:8080/api/communities/${communityId}/posts`).then(res => {
-            console.log(res);
+        await axios.get(`http://localhost:8080/api/posts/community/${communityId}`).then(res => {
+       
             setPosts(res.data);
         }).catch(err => {
             console.log(err)
         })
     }
-    console.log(communityId)
+   
     useEffect(() => {
         fetchCommunityPosts(communityId)
     }, [communityId]);
@@ -92,9 +92,9 @@ export function Communityposts(props) {
      
       <CardActions className="d-flex">
         <Button startIcon={<ChatBubbleIcon/>}  style={{fontWeight:550,textTransform:"none",fontSize:12}}>
-        {post.comments.length||0}  Comments
+        {0}  Comments
         </Button>
-            <div className="ml-auto" style={{fontWeight:550,textTransform:"none",fontSize:13, marginBottom:3.8}}>Posted by on {post.createdAt} by <a href="/login" style={{color: "#202020",fontWeight:600}}>{post.user.username}</a></div>
+            <div className="ml-auto" style={{fontWeight:550,textTransform:"none",fontSize:13, marginBottom:3.8}}>Posted by on {String(post.createdAt).substring(0,10)} by <a href="/login" style={{color: "#202020",fontWeight:600}}>{post.user.username}</a></div>
       </CardActions> </div>
     </Card>)}
          

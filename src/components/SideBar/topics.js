@@ -3,7 +3,7 @@ import ArrowDropUp from "@material-ui/icons/ArrowDropUp";
 import Button from '@material-ui/core/Button';
 import axios from 'axios'
 import './topics.css'
-
+import authHeader from '../../Service/AuthHeader'
 
 export function Topics(props) {
 
@@ -11,7 +11,7 @@ const [topics, setTopics] = useState([]);
 
 
 const fetchTopics = () => {
-  axios.get("http://localhost:8080/topics").then(res => {
+  axios.get("http://localhost:8080/api/topics",{headers:authHeader()}).then(res => {
     console.log(res);
     setTopics(res.data);
   }).catch(err => {

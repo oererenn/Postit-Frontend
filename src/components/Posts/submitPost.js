@@ -10,7 +10,7 @@ import Divider from '@material-ui/core/Divider';
 import axios from 'axios'
 import Snackbar from '@material-ui/core/Snackbar';
 import MuiAlert from '@material-ui/lab/Alert';
-
+import authHeader from '../../Service/AuthHeader'
 
 function Alert(props) {
   return <MuiAlert elevation={6} variant="filled" {...props} />;
@@ -18,7 +18,7 @@ function Alert(props) {
 
 
 export function Submitpost(props) {
-    
+ const user = JSON.parse(localStorage.getItem('user'));
  const [communities, setCommunities] = useState([]);
  const [image, setImage] = useState([]);
  const [success,setSuccess] = useState(false);
@@ -35,7 +35,7 @@ export function Submitpost(props) {
  }
 
  const addPost = (postData) => {
-     axios.post("http://localhost:8080/api/posts", postData,{
+     axios.post("http://localhost:8080/api/posts", postData,{ headers: authHeader()
      }).then(res => {
          console.log("file uploaded successfully");
          setSuccess(true)
@@ -70,7 +70,7 @@ const handleClose = (event, reason) => {
 
  async function onSubmit(data) {
        
-       data.userId = "52eb2084-1b1f-42fc-88ec-8d6dca1b86f4";
+       data.userId = user.id;
        const formData = new FormData();
        formData.append("file", image)
        formData.append("data", new Blob([JSON.stringify({

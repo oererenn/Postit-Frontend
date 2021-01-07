@@ -19,7 +19,8 @@ import { useForm } from 'react-hook-form'
 import ButtonGroup from '@material-ui/core/ButtonGroup';
 import { useHistory } from 'react-router-dom'
 import CircularProgress from '@material-ui/core/CircularProgress';
-
+import authHeader from '../../Service/AuthHeader'
+import DeleteIcon from '@material-ui/icons/Delete';
 const useStyles = makeStyles((theme) => ({
   upvote: {
     color: "",
@@ -51,12 +52,18 @@ export function Post(props) {
   const { register, handleSubmit, reset } = useForm();
   const user = JSON.parse(localStorage.getItem("user"));
   const history = useHistory()
-
   const fetchPost = (postId) => {
     axios.get(`http://localhost:8080/api/posts/${postId}`).then(res => {
-      console.log(res.data);
       setPost(res.data);
-      setComments(res.data.comments)
+      setBusy(false)
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
+  const fetchPostComment = (postId) => {
+    axios.get(`http://localhost:8080/api/posts/comment/${postId}`).then(res => {
+      setComments(res.data)
       setBusy(false)
     }).catch(err => {
       console.log(err)
@@ -64,9 +71,18 @@ export function Post(props) {
   }
 
   const makeComment = (data) => {
-    axios.post(`http://localhost:8080/api/comments`, data).then(res => {
-      console.log(res.data);
+    axios.post(`http://localhost:8080/api/comments`, data,{headers:authHeader()}).then(res => {
       fetchPost(postId)
+      fetchPostComment(postId)
+    }).catch(err => {
+      console.log(err)
+    })
+  }
+
+  const deleteComment = (commentId) => {
+    axios.delete(`http://localhost:8080/api/comments/${commentId}`,{headers:authHeader()}).then(res => {
+fetchPost(postId)
+fetchPostComment(postId)
     }).catch(err => {
       console.log(err)
     })
@@ -74,10 +90,20 @@ export function Post(props) {
 
   useEffect(() => {
     fetchPost(postId)
+    fetchPostComment(postId)
   }, [postId]);
 
   function gotoLogin() {
     history.push("/login")
+  }
+  
+  const DeleteSign = userId => {
+    if(user){
+      if(user.id === userId.userId){
+         return <div className="ml-auto"><DeleteIcon/></div>
+      }
+    }
+    return null
   }
 
   function gotoSignup() {
@@ -86,7 +112,7 @@ export function Post(props) {
 
   const onSubmit = data => {
     data.postId = postId
-    data.userId = "52eb2084-1b1f-42fc-88ec-8d6dca1b86f4"
+    data.userId = user.id;
     makeComment(data);
     reset()
   };
@@ -128,9 +154,9 @@ export function Post(props) {
 
               <CardActions className="d-flex">
                 <Button startIcon={<ChatBubbleIcon />} style={{ fontWeight: 550, textTransform: "none", fontSize: 12 }}>
-                  {post.comments.length || 0}  Comments
+                  {comments.length || 0}  Comments
         </Button>
-                <div className="ml-auto" style={{ fontWeight: 550, textTransform: "none", fontSize: 13, marginBottom: 3.8 }}>Posted by on {post.createdAt} by <a href="/login" style={{ color: "#202020", fontWeight: 600 }}>{post.user.username}</a></div>
+                <div className="ml-auto" style={{ fontWeight: 550, textTransform: "none", fontSize: 13, marginBottom: 3.8 }}>Posted by on {String(post.createdAt).substring(0,10)} by <a href="/login" style={{ color: "#202020", fontWeight: 600 }}>{post.user.username}</a></div>
 
               </CardActions> </div>
 
@@ -144,7 +170,7 @@ export function Post(props) {
             style={{ backgroundColor: "#ffffff" }}
             inputRef={register}
             required
-            name="comment"
+            name="text"
             id="outlined-multiline-static"
             label="What are your thoughts?"
             multiline
@@ -178,14 +204,17 @@ export function Post(props) {
             <div style={{ backgroundColor: "#F8F9FA" }} className="d-flex flex-row align-items-start justify-content-center">
               <Box style={{ minWidth: 30 }}>
                 <IconButton><ArrowUpwardIcon className={classes.upvote} /></IconButton>
-                <div style={{ fontWeight: 500, marginLeft: 19 }}>{post.voteCount || 0}</div>
+                <div style={{ fontWeight: 500, marginLeft: 19 }}>{0}</div>
                 <IconButton><ArrowDownwardIcon className={classes.downvote} /></IconButton>
 
               </Box>
             </div>
-            <CardContent>
-              <Typography style={{ fontSize: 14 }} color="textSecondary">
-                <a style={{ color: "#555555", fontWeight: 550 }} href="/home">{comment.user.username}</a> on {comment.createdAt}
+            <CardContent className="w-100">
+              <Typography className="w-100" style={{ fontSize: 14 }} color="textSecondary">
+                <div className="d-flex">
+                <div><a style={{ color: "#555555", fontWeight: 550 }} href="/home">{comment.user.username}</a> on {String(comment.createdAt).substring(0,10)}</div>
+             <div onClick={()=> deleteComment(comment.id)} className="ml-auto"><DeleteSign userId={comment.user.id}/></div>
+                </div>
               </Typography>
               <Typography>
                 {comment.text}
