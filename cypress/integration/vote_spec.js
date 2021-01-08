@@ -11,41 +11,5 @@ describe('Vote', function () {
             const text = $el.text();
             expect(text).to.equal("1")
         })
-         cy.get('#upVote').click()
-         cy.get('#voteCount').then(($el) => {
-             const text = $el.text();
-             expect(text).to.equal("0")
-         })
-        cy.get('#downVote').click()
-        cy.get('#voteCount').then(($el) => {
-            const text = $el.text();
-            expect(text).to.equal("-1")
-        })
-        
-        cy.get('#downVote').click()
-        cy.get('#voteCount').then(($el) => {
-            const text = $el.text();
-            expect(text).to.equal("0")
-        })
-        cy.get('#upVote').click()
-        cy.get('#voteCount').then(($el) => {
-            const text = $el.text();
-            expect(text).to.equal("1")
-        })
-        cy.get('#downVote').click()
-        cy.get('#voteCount').then(($el) => {
-            const text = $el.text();
-            expect(text).to.equal("-1")
-        })
-        cy.get('#upVote').click()
-        cy.get('#voteCount').then(($el) => {
-            const text = $el.text();
-            expect(text).to.equal("1")
-        })
-        cy.get('#upVote').click()
-        cy.get('#voteCount').then(($el) => {
-            const text = $el.text();
-            expect(text).to.equal("0")
-        })
     })
 })
