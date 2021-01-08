@@ -208,7 +208,7 @@ const user = JSON.parse(localStorage.getItem('user'))
             />
           </div>
           {user ? <a href="/submit" style={{color: "#ffffff"}}><AddIcon/></a> : <a href="/login" style={{color: "#ffffff"}}>Login</a>}&nbsp;
-          {user ? <a href="/submit" style={{color: "#ffffff"}}><AddIcon/></a> : <a href="/register" style={{color: "#ffffff"}}>Register</a>}
+          {user ? null : <a href="/register" style={{color: "#ffffff"}}>Register</a>}
           <div className={classes.grow} />
           {user ?<div className={classes.sectionDesktop}>
             <IconButton
