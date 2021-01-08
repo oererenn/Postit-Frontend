@@ -6,13 +6,46 @@ describe('Vote', function () {
 
         cy.get("#password").type('12345678').should('have.value', '12345678')
         cy.get('#loginForm').submit()
-        cy.get('#voteCount').should('have.value', '')
         cy.get('#upVote').click()
+        cy.get('#voteCount').then(($el) => {
+            const text = $el.text();
+            expect(text).to.equal("1")
+        })
+         cy.get('#upVote').click()
+         cy.get('#voteCount').then(($el) => {
+             const text = $el.text();
+             expect(text).to.equal("0")
+         })
         cy.get('#downVote').click()
+        cy.get('#voteCount').then(($el) => {
+            const text = $el.text();
+            expect(text).to.equal("-1")
+        })
+        
         cy.get('#downVote').click()
+        cy.get('#voteCount').then(($el) => {
+            const text = $el.text();
+            expect(text).to.equal("0")
+        })
         cy.get('#upVote').click()
+        cy.get('#voteCount').then(($el) => {
+            const text = $el.text();
+            expect(text).to.equal("1")
+        })
         cy.get('#downVote').click()
+        cy.get('#voteCount').then(($el) => {
+            const text = $el.text();
+            expect(text).to.equal("-1")
+        })
         cy.get('#upVote').click()
+        cy.get('#voteCount').then(($el) => {
+            const text = $el.text();
+            expect(text).to.equal("1")
+        })
         cy.get('#upVote').click()
+        cy.get('#voteCount').then(($el) => {
+            const text = $el.text();
+            expect(text).to.equal("0")
+        })
     })
 })
