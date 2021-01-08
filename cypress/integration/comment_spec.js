@@ -9,6 +9,9 @@ describe('Vote', function () {
         cy.get("#postCard").click()
         cy.get("#commentBox").type("Hi").should("have.value","Hi")
         cy.get("#commentButton").click();
-        cy.get("#commentText").click()
+        cy.get('#commentText').then(($el) => {
+            const text = $el.text();
+            expect(text).to.equal("Hi")
+        })
     })
 })

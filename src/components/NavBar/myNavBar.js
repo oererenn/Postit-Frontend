@@ -207,19 +207,10 @@ const user = JSON.parse(localStorage.getItem('user'))
               inputProps={{ 'aria-label': 'search' }}
             />
           </div>
-          {user ? <a href="/submit" style={{color: "#ffffff"}}><AddIcon/></a> : <a href="/login" style={{color: "#ffffff"}}>Login</a>}
+          {user ? <a href="/submit" style={{color: "#ffffff"}}><AddIcon/></a> : <a href="/login" style={{color: "#ffffff"}}>Login</a>}&nbsp;
+          {user ? null : <a href="/register" style={{color: "#ffffff"}}>Register</a>}
           <div className={classes.grow} />
           {user ?<div className={classes.sectionDesktop}>
-            <IconButton aria-label="show 4 new mails" color="inherit">
-              <Badge badgeContent={4} color="secondary">
-                <MailIcon />
-              </Badge>
-            </IconButton>
-            <IconButton aria-label="show 17 new notifications" color="inherit">
-              <Badge badgeContent={17} color="secondary">
-                <NotificationsIcon />
-              </Badge>
-            </IconButton>
             <IconButton
               edge="end"
               aria-label="account of current user"

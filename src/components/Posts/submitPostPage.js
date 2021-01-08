@@ -13,30 +13,14 @@ export function Submitpostpage(props) {
   }
   return (
     <div className="submit-page-grid-container">
-
-
       <div className="myNav w-100"><NavBar className="w-100" /></div>
-
-
-
       <div className="submit-page-page-content">
         <div className="submit-page-posts"><SubmitPost /></div>
-
-
-
       </div>
-
-
-
       <div className="submit-page-side-menu">
         <div className="submit-page-rulebar"> <RuleBar /></div>
         <div className="submit-page-footer"><Footer /></div>
-
-
       </div>
-
-
-
     </div>
   )
 }

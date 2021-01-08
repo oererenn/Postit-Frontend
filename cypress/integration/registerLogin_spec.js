@@ -3,7 +3,7 @@ describe('Register', function () {
         cy.visit("http://localhost:3000/register")
         cy.url().should('match', /register/)
 
-        cy.get("#username").type('oereren').should('have.value', 'oereren')
+        cy.get("#username").type('oereren27').should('have.value', 'oereren27')
         cy.get("#email").type('oereren@hotmail.com').should('have.value', 'oereren@hotmail.com')
         cy.get("#password").type('12345678Test@').should('have.value', '12345678Test@')
         cy.get('#loginForm').submit()
